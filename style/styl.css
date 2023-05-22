@@ -1,0 +1,62 @@
+.fo{
+    color: white;
+    /* glass reflex effect */
+    background: linear-gradient(219.11deg, rgba(0, 0, 0, 0.066) 22.82%, rgba(255, 255, 255, 0.14) 47.12%, rgba(0, 0, 0, 0) 67.06%), rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.62);
+    backdrop-filter: blur(2.5px);
+    /* Note: backdrop-filter has minimal browser support */
+    border-radius: 12px;
+}
+.logo img{
+    border-radius: 50%;
+    margin-left: 90px;
+    width: 150px;
+    height: 150px;
+}
+.t1{
+    color: #0073FA;
+    padding-left: 35px;
+}
+.mem{
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+}
+
+/* lISTES DES EUDIANTS */
+body {
+    background-color:#2B1D1D;
+    color: white;
+}
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #FF8F8F;
+}
+.table-striped tbody tr:nth-of-type(even) {
+    background-color: #D9D9D9;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #d7a101;
+}
+thead th {
+    color: white;
+    font-style: italic;
+}
+.t2{
+    border-top: solid 15px;
+    border-top-color: #0073FA;
+    border-bottom:solid 15px;
+    border-bottom-color:  #0073FA;
+    border-left: solid 3px;
+    border-left-color:rgb(200, 21, 240) ;
+    border-right: solid 3px;
+    border-right-color:rgb(200, 21, 240) ;
+}
+.t3{
+    color: #0073FA;
+    background-color: aliceblue;
+    width: 450px;
+    height: 60px;
+    border-radius: 20px;
+    margin-left: 300px;
+}
