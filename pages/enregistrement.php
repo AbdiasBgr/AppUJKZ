@@ -31,7 +31,8 @@
 		<h1 class="text-center mb-4">Merci !</h1>
 		<p class="text-center">Vos données ont bien été enregistrées dans notre base de données.</p>
 		<div class="d-grid gap-2 col-6 mx-auto mt-4">
-			<a href="index.php" class="btn btn-primary">Retourner à la page d'accueil</a>
+			<a href="../index.php" class="btn btn-primary">Retourner à la page d'accueil</a>
+			<a href="Liste.php" class="btn btn-primary">Afficher Liste Etudiants</a>
 		</div>
 	</div>
 </body>

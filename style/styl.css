@@ -14,9 +14,10 @@
     height: 150px;
 }
 .t1{
-    color: #0073FA;
+    color: #7a0505;
     padding-left: 35px;
 }
+
 .mem{
     display: flex;
     flex-direction: row;
