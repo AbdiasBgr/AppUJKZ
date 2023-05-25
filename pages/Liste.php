@@ -14,7 +14,7 @@
 </head>
 <body>
     <div class="container py-5 ">
-        <h1 class="text-center mb-5 t3">Liste des étudiants</h1>
+        <h1 class="text-center mb-1 t3">Liste des étudiants</h1>
     <?php 
 // Se connecter à la base de données
 $servername = 'localhost';
@@ -66,8 +66,7 @@ if ($result->num_rows > 0) {
 // Fermer la connexion à la base de données
 $conn->close();
 ?>
-</div>
-    <!-- Bootstrap JavaScript -->
+<a href="../index.php" class="btn btn-primary">Retourner à la page d'accueil</a>    <!-- Bootstrap JavaScript -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </body>
 </html>
