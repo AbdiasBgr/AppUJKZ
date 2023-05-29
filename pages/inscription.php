@@ -13,18 +13,40 @@
     <title>Formulaire d'inscription</title>
     <style>
       body {
-        background-color: #000000;
+        background-color: white;
       }
       .t1{
-          color: #7a0505;
-          padding-left: 35px;
+          color: #5EFFCB;
+          padding-left: 25px;
       }
+      .fo{
+    color: black;
+    /* glass reflex effect */
+    background: linear-gradient(219.11deg, rgba(0, 0, 0, 0.066) 22.82%, rgba(255, 255, 255, 0.14) 47.12%, rgba(0, 0, 0, 0) 67.06%), rgba(255, 255, 255, 0.1);
+    border: 2px solid rgba(153, 151, 151, 0.62);
+    backdrop-filter: blur(2.5px);
+    /* Note: backdrop-filter has minimal browser support */
+    border-radius: 12px;
+}
+.logo img{
+    border-radius: 50%;
+    margin-left: 100px;
+    width: 150px;
+    height: 150px;
+}
+
+
+.mem{
+    display: flex;
+    flex-direction: row;
+    column-gap: 10px;
+}
     </style>
   </head>
   <body>
     <div class="container">
       <div class="row">
-        <div class="col-md-4">
+        <div class="col-md-4 mt-4">
           <!-- Mon image en SVG à Gauche BGR -->
           <svg
             width="433"
@@ -699,8 +721,8 @@
             </g>
           </svg>
         </div>
-        <div class="col-md-4 fo">
-          <h2 class="t1">Inscription P04-UJKZ</h2>
+        <div class="col-md-4 mt-3 mb-3 fo">
+          <h2 class="t1 mt-2">Inscription P04-UJKZ</h2>
           <div class="logo">
             <img src="../images/logo.jpeg" alt="" />
           </div>
@@ -764,7 +786,7 @@
                 placeholder="Nom Complet"
                 required />
             </div>
-            <button type="submit" class="btn btn-success float-end">
+            <button type="submit" class="btn btn-success float-end mb-3">
               S'inscrire
             </button>
           </form>

@@ -53,7 +53,6 @@
 
 <body>
   <div class="container-fluid logo-container">
-    <h3 class="pb-3">ZerboLink</h3>
     <a href="index.php"><img src="images/logo.jpeg" alt="Logo" class="logo mb-5"></a>
     <div>
       <a href="pages/inscription.php" class="btn btn-success me-3" style="width: 130px;">S'inscrire</a>

@@ -14,15 +14,42 @@
     <style>
       .t2{
         border-top: solid 3px;
-        border-top-color: #0073FA;
+        border-top-color: white;
         border-bottom:solid 3px;
-        border-bottom-color:  #0073FA;
+        border-bottom-color:  white;
         border-left: solid 3px;
-        border-left-color:rgb(200, 21, 240) ;
+        border-left-color:white ;
         border-right: solid 3px;
-        border-right-color:rgb(200, 21, 240) ;
+        border-right-color: white;
       }
-    </style>
+      body {
+    background-color:#2B1D1D;
+    color: white;
+}
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: #0073FA;
+}
+.table-striped tbody tr:nth-of-type(even) {
+    background-color: #D9D9D9;
+}
+
+.table-hover tbody tr:hover {
+    background-color: #EB5757;
+}
+thead th {
+    color: white;
+    font-style: italic;
+}
+
+.t3{
+    color: #0073FA;
+    background-color: aliceblue;
+    width: 450px;
+    height: 60px;
+    border-radius: 20px;
+    margin-left: 300px;
+}
+    </style> 
 </head>
 <body>
     <div class="container py-5 ">
