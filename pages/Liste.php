@@ -11,14 +11,27 @@
   />
   <link rel="stylesheet" href="../style/styl.css">
     <title>Liste des étudiants</title>
+    <style>
+      .t2{
+        border-top: solid 3px;
+        border-top-color: #0073FA;
+        border-bottom:solid 3px;
+        border-bottom-color:  #0073FA;
+        border-left: solid 3px;
+        border-left-color:rgb(200, 21, 240) ;
+        border-right: solid 3px;
+        border-right-color:rgb(200, 21, 240) ;
+      }
+    </style>
 </head>
 <body>
     <div class="container py-5 ">
-        <h1 class="text-center mb-1 t3">Liste des étudiants</h1>
+        <h1 class="text-center mb-4 t3">Liste des étudiants</h1>
     <?php 
 // Se connecter à la base de données
 $servername = 'localhost';
 $username = 'root';
+$password = '';
 $dbname = 'appujkz';
 
 $conn = new mysqli($servername, $username, $password, $dbname);
@@ -66,6 +79,7 @@ if ($result->num_rows > 0) {
 // Fermer la connexion à la base de données
 $conn->close();
 ?>
+
 <a href="../index.php" class="btn btn-primary">Retourner à la page d'accueil</a>    <!-- Bootstrap JavaScript -->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
 </body>

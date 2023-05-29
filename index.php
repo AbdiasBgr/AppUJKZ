@@ -44,11 +44,16 @@
             height: 400px;
             padding-bottom: 30px;
 		}
+    h3{
+      color: black;
+
+    }
   </style>
 </head>
 
 <body>
   <div class="container-fluid logo-container">
+    <h3 class="pb-3">ZerboLink</h3>
     <img src="images/logo.jpeg" alt="Logo" class="logo mb-5">
     <div>
       <a href="pages/inscription.php" class="btn btn-success me-3" style="width: 130px;">S'inscrire</a>

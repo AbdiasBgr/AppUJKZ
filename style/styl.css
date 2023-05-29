@@ -43,16 +43,6 @@ thead th {
     color: white;
     font-style: italic;
 }
-.t2{
-    border-top: solid 15px;
-    border-top-color: #0073FA;
-    border-bottom:solid 15px;
-    border-bottom-color:  #0073FA;
-    border-left: solid 3px;
-    border-left-color:rgb(200, 21, 240) ;
-    border-right: solid 3px;
-    border-right-color:rgb(200, 21, 240) ;
-}
 .t3{
     color: #0073FA;
     background-color: aliceblue;
