@@ -98,7 +98,7 @@
                     <td>".$row["personneprevenir"]."</td>
                     <td>
                       <div class='btn-group' role='group'>
-                        <button onclick='editRecord(".$id.")' class='btn btn-success'>Modifier</button>
+                        <a href='modifier.php?id=".$row['id']. "'class='btn btn-success'>Modifier</a>
                         <button onclick='confirmDelete(".$id.")' class='btn btn-danger delete-button'>Supprimer</button>
                       </div>
                     </td>
