@@ -44,16 +44,26 @@
         color: white;
         cursor: pointer;
       }
+/* Rien mon code */
+      /* .form-container {
+        border-top: solid 3px;
+        border-top-color: white;
+        border-bottom:solid 3px;
+        border-bottom-color:  white;
+        border-left: solid 3px;
+        border-left-color:white ;
+        border-right: solid 3px;
+        border-right-color: white;
+      } */
     </style> 
 </head>
 <body>
   <div class="container py-5">
     <h1 class="text-center mb-4 t3">Modifier un étudiant</h1>
     <?php 
-    // Inclure le fichier de connexion à la base de données
+    // Incluons le fichier de connexion à la base de données
     require_once "db.php";
 
-    // Vérifier si le formulaire a été soumis via la méthode POST
     if ($_SERVER["REQUEST_METHOD"] == "POST") {
       try {
         // Récupérer les valeurs du formulaire
@@ -66,10 +76,9 @@
         $dateadmission = $_POST["dateadmission"];
         $personneprevenir = $_POST["personneprevenir"];
 
-        // Se connecter à la base de données en utilisant la fonction connect_db() définie dans db.php
         $conn = connect_db();
 
-        // Effectuer la requête SQL pour mettre à jour l'enregistrement
+        // Effectuons la requête SQL pour mettre à jour l'enregistrement
         $sql = "UPDATE appujkzt SET nom=:nom, prenom=:prenom, email=:email, date_naissance=:date_naissance, dateinscription=:dateinscription, dateadmission=:dateadmission, personneprevenir=:personneprevenir WHERE id=:id";
         $stmt = $conn->prepare($sql);
         $stmt->execute([
@@ -82,30 +91,25 @@
           'dateadmission' => $dateadmission,
           'personneprevenir' => $personneprevenir
         ]);
-
-        // Rediriger vers la page liste.php après la modification
         header("Location: liste.php");
         exit();
       } catch (PDOException $e) {
         die("Erreur: " . $e->getMessage());
       }
     } else {
-      // Récupérer l'ID de l'enregistrement à modifier à partir de la chaîne de requête GET
+      // Id de l'enregistrement
       $id = $_GET['id'];
 
       try {
-        // Se connecter à la base de données en utilisant la fonction connect_db() définie dans db.php
+
         $conn = connect_db();
 
-        // Effectuer la requête SQL pour récupérer les données de l'enregistrement à modifier
         $sql = "SELECT * FROM appujkzt WHERE id =:id";
         $stmt = $conn->prepare($sql);
         $stmt->execute(['id' => $id]);
         $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        // Vérifier si des données ont été trouvées
         if ($result) {
-          // Afficher le formulaire de modification avec les valeurs pré-remplies
           echo '<div class="form-container">
                   <form method="post">
                     <input type="hidden" name="id" value="'.$result["id"].'">

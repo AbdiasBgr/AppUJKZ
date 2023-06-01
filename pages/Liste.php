@@ -3,29 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <link
-    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css"
-    rel="stylesheet"
-    integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ"
-    crossorigin="anonymous"
-  />
-  <link rel="stylesheet" href="../style/styl.css">
+    <link rel="stylesheet" href="../style/styl.css">
     <title>Liste des étudiants</title>
     <style>
       .t2 {
-        border-top: solid 3px;
-        border-top-color: white;
-        border-bottom:solid 3px;
-        border-bottom-color:  white;
-        border-left: solid 3px;
-        border-left-color:white ;
-        border-right: solid 3px;
-        border-right-color: white;
-      }
-      body {
-        background-color:#2B1D1D;
-        color: white;
-      }
+    border-top: solid 3px;
+    border-top-color: black;
+    border-bottom:solid 3px;
+    border-bottom-color:  black;
+    border-left: solid 3px;
+    border-left-color: black ;
+    border-right: solid 3px;
+    border-right-color: black;
+  }   
       .table-striped tbody tr:nth-of-type(odd) {
         background-color: #0073FA;
       }
@@ -52,14 +42,14 @@
     </style> 
 </head>
 <body>
-  <div class="container py-5 ">
+  <div class="container-fluid py-5 " style=" background-color: #2B1D1D; ">
     <h1 class="text-center mb-4 t3">Liste des étudiants</h1>
     <?php 
-    // Inclure le fichier de connexion à la base de données
+    
     require_once "db.php";
 
     try {
-      // Se connecter à la base de données en utilisant la fonction connect_db() définie dans db.php
+      
       $conn = connect_db();
 
       // Effectuer la requête SQL pour récupérer les données de la table
@@ -68,9 +58,9 @@
       $stmt->execute();
       $result = $stmt->fetchAll(PDO::FETCH_ASSOC);
 
-      // Vérifier si des données ont été trouvées
+      
       if (count($result) > 0) {
-        // Générer le tableau HTML et ajouter chaque entrée de la table comme une nouvelle ligne dans le tableau
+        
         echo "<table class='table table-striped table-hover t2'>
                   <thead>
                       <tr>
@@ -81,12 +71,12 @@
                           <th>Date d'Inscription</th>
                           <th>Date d'Admission</th>
                           <th>Personne à Prévenir</th>
-                          <th>Action</th>
+                          <th style=' padding-left: 100px;'>Action</th>
                       </tr>
                   </thead>
                   <tbody>";
         foreach ($result as $row) {
-          // Extraire l'ID de l'enregistrement courant
+
           $id = $row['id'];
           echo "<tr>
                     <td>".$row["nom"]."</td>
@@ -97,8 +87,9 @@
                     <td>".$row["dateadmission"]."</td>
                     <td>".$row["personneprevenir"]."</td>
                     <td>
-                      <div class='btn-group' role='group'>
-                        <a href='modifier.php?id=".$row['id']. "'class='btn btn-success'>Modifier</a>
+                    <div class='btn-group' role='group'>
+                    <a href='modifier.php?id=".$row['id']. "'class='btn btn-success'>Modifier</a>
+                        <button class='btn btn-primary btn-details' data-id='".$id."'>Détails</button>
                         <button onclick='confirmDelete(".$id.")' class='btn btn-danger delete-button'>Supprimer</button>
                       </div>
                     </td>
@@ -110,7 +101,6 @@
         echo "0 résultats trouvés dans la table appujkzt.";
       }
 
-      // Fermer la connexion à la base de données
       $stmt = null;
       $conn = null;
     } catch (PDOException $e) {
@@ -119,22 +109,61 @@
     ?>
 
     <a href="../index.php" class="btn btn-primary">Retourner à la page d'accueil</a>
+    <!-- Modal -->
+    <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Informations personnelles</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+      <div id="person-details"></div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Fermer</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- Include Bootstrap and jQuery -->
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/css/bootstrap.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.1.3/js/bootstrap.bundle.min.js"></script>
+<!-- Script Pour le Bouton détails -->
+    <script>
+      $(document).ready(function() {
+        $('.btn-details').click(function() {
+          var id = $(this).data('id');
+          $.ajax({
+            url: 'personinfo.php',
+            type: 'GET',
+            data: { id: id },
+            success: function(response) {
+              $('#person-details').html(response);
+              $('#exampleModal').modal('show'); 
+            },
+            error: function() {
+              console.log('Une erreur s\'est produite lors de la récupération des informations de la personne.');
+            }
+          });
+        });
+      });
+    </script>
 
-    <!-- Bootstrap JavaScript -->
+    <!-- Bootstrap JavaScript Script Pour la Suppression -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.4/jquery.min.js"></script>
     <script type="text/javascript">
       function confirmDelete(id) {
         if (confirm("Êtes-vous sûr de vouloir supprimer cet enregistrement ?")) {
-          // Si l'utilisateur clique sur "OK", appeler la fonction AJAX pour supprimer l'enregistrement
           $.post("supprimer.php", {id: id}, function(data){
             alert(data);
-            location.reload(); // Recharger la page après avoir supprimé l'enregistrement
+            location.reload(); 
           });
         } else {
-          // Si l'utilisateur clique sur "Annuler", ne rien faire
           return false;
         }
       }
-</script>
-</body>
+    </script>
+  </body>
 </html>
